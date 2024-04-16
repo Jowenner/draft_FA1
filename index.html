@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up Sheet</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Input</legend>
+            <label for="Name">Name:</label><br>
+            <input type="text" id="name" onblur="myFunction(this)" onfocus="myFunction1(this)"><br>
+
+            <label for="username">Preferred Username:</label><br>
+            <input type="text" id="username" onblur="myFunction(this)" onfocus="myFunction1(this)"><br>
+
+            <label for="gender">Gender</label><br>
+            <select name="Gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="pntm">Prefer not to mention</option>
+            </select><br>
+
+            <label for="pWord">Password: </label><br>
+            <input type = "password" id="pWord" onblur="myFunction(this)" onfocus="myFunction1(this)"><br>
+
+            <label for="email">Email: </label><br>
+            <input type="email" id="email" onblur="myFunction(this)" onfocus="myFunction1(this)"><br>
+
+            <label for="Address">Address: </label><br>
+            <input type = "url" id="Address" onblur="myFunction(this)" onfocus="myFunction1(this)"><br>
+
+            <label for="comments">Interests: </label></br>
+            <textarea id="tArea" name="comments" rows="5" cols="60" onblur="myFunction(this)" onfocus="myFunction1(this)"> </textarea><br>
+
+            <input type = "submit" value = "Submit form">
+
+            <input type = "reset" value = "Reset"><br>
+
+        </fieldset>
+        <div class="output"></div>
+            <script>
+                function myFunction(element){
+                    if(element.value === ''){
+                        element.classList.add('red-border');
+                        element.classList.remove('green-border');
+                    }
+                    else{
+                        element.classList.add('green-border');
+                    }
+                }
+                function myFunction1(element){
+                    if(element.value !== ''){
+                        element.classList.add('green-border');
+                        element.classList.remove('red-border');
+                    }
+                    else{
+                        element.classList.add('red-border');
+                    }
+                }
+                function displayInput() {
+                var name = document.getElementById('name').value;
+                var username = document.getElementById('username').value;
+                var gender = document.getElementById('gender').value;
+                var email = document.getElementById('email').value;
+                var address = document.getElementById('Address').value;
+                var interests = document.getElementById('tArea').value;
+
+                var outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = `
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Preferred Username:</strong> ${username}</p>
+                    <p><strong>Gender:</strong> ${gender}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Address:</strong> ${address}</p>
+                    <p><strong>Interests:</strong> ${interests}</p>
+                `;
+            }
+        </script>
+    </form>
+    <button onclick="displayInput()">Display Input</button>
+
+</body>
+</html>
